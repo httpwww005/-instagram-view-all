@@ -1,1 +1,1 @@
-# -instagram-view-all
+# instagram-view-all
