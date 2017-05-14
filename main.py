@@ -95,7 +95,8 @@ def index(ig_user=None):
 
     query = dict(request.query)
 
-    total = query.get("total", 11)
+    total = int(query.get("total", 11))
+  
     if "pswp" in query:
         pswp = True
     else:
@@ -112,9 +113,9 @@ def index(ig_user=None):
         if pswp:
             response['Content-Type'] = "application/json"
             #return json.dumps({"items":r})
-            return json.dumps(r)
+            return json.dumps(r[:total])
         else:
-            return template('ig', ig_user = ig_user) 
+            return template('ig', ig_user = ig_user, total=total) 
     else:
     	return template('index')
 

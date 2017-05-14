@@ -27,7 +27,7 @@
 
 		$(document).ready(function() {
 			function get_items(ig_user) {
-				$.get(ig_user, {"pswp":""}).done(function(items){
+				$.get(ig_user, {"total":{{total}},"pswp":""}).done(function(items){
 					var pswpElement = document.querySelectorAll('.pswp')[0];
 					var options = {
 						// optionName: 'option value'
