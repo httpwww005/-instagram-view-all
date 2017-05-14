@@ -62,6 +62,7 @@ class Instagram():
                 response = self.get_ig(self.next_id)
                 media = response["user"]["media"]
                 nodes = media["nodes"]
+                self.next_id = nodes[-1]["id"]
                 self.count += len(nodes)
                 self.nodes.extend(self.parse_nodes(nodes))
             else:
