@@ -54,15 +54,16 @@ class Instagram():
         self.count = len(nodes)
 
     def run(self):
-        has_next_page = self.has_next_page
+        #has_next_page = self.has_next_page
         while True:
             #print("current count: %s" % self.count, file=sys.stderr)
-            has_next_page = self.has_next_page
-            if has_next_page and (self.count < self.total):
+            #has_next_page = self.has_next_page
+            if self.has_next_page and (self.count < self.total):
                 response = self.get_ig(self.next_id)
                 media = response["user"]["media"]
                 nodes = media["nodes"]
                 self.next_id = nodes[-1]["id"]
+                self.has_next_page = media["page_info"]["has_next_page"]
                 self.count += len(nodes)
                 self.nodes.extend(self.parse_nodes(nodes))
             else:
